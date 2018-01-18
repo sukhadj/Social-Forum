@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+{{object.title}} | {{block.super}}
+{% endblock title %}
+
+{% block content %}
+<h3 style="text-align:center;">{{ object.title }}</h3>
+{{ object.text }}
+<h6 style="padding-top: 15px">
+<img src="{{object.image.url}}" alt="image" width="500"  /><br>
+<button>Upvotes:{{object.upvotes}}</button>
+
+</h6>
+{% endblock content %}

@@ -1,0 +1,3 @@
+Forum
+-Posts-User can post things(contains texts,files) User can see others posts,upvotes it 
+-Message/Chat

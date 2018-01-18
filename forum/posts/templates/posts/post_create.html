@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Create | {{block.super}}
+{% endblock title %}
+{% block content %}
+{% if form.errors %}
+	{{form.errors}}
+	{% endif %}
+	<form method="POST" enctype="media/image" >{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit">Save</button>
+</form>
+
+{% endblock content %}
