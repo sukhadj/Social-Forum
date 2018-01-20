@@ -5,10 +5,33 @@
 
 {% block content %}
 <h3 style="text-align:center;">{{ object.title }}</h3>
+<small style="color: #696969;text-align: center;" >{{object.timestamp}}</small><br>
 {{ object.text }}
 <h6 style="padding-top: 15px">
+	{% if object.image %}
 <img src="{{object.image.url}}" alt="image" width="500"  /><br>
-<button>Upvotes:{{object.upvotes}}</button>
+	{% endif %}
+<button  style="margin-top: 25px" >Upvotes:{{object.upvotes}}</button>
+
+<hr>
+<h4 style="text-align: center;">Comments</h4>
+{% if object.comment_set.all %}
+	{% for comment in object.comment_set.all %}
+		<div >
+				<hr>
+				{{comment.user.username}}
+			<br>
+			{{comment.comment_text}}<br>
+			<small style="color: #696969;" >{{comment.timestamp}}</small><br>
+		</div>
+	{% endfor %}
+{% endif %}
+<hr>
+<h5>Add Comment</h5>
+<form method="POST" action="{% url 'details' slug=object.slug %}">{% csrf_token %}
+	{{form.as_p}}
+	<button style="padding-top: 25px" type="submit">Comment</button>
+</form>
 
 </h6>
 {% endblock content %}

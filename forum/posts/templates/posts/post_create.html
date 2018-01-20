@@ -6,9 +6,9 @@ Create | {{block.super}}
 {% if form.errors %}
 	{{form.errors}}
 	{% endif %}
-	<form method="POST" enctype="media/image" >{% csrf_token %}
+	<form method="POST" enctype="multipart/form-data" >{% csrf_token %}
 	{{form.as_p}}
-	<button type="submit">Save</button>
+	<button style="padding-top: 25px" type="submit">Save</button>
 </form>
 
 {% endblock content %}
