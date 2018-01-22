@@ -23,7 +23,7 @@ class Post(models.Model):
 		self.upvotes=self.upvotes+1
 
 	def get_absolute_url(self):
-		return reverse("details",kwargs={'slug':self.slug})
+		return reverse("posts:details",kwargs={'slug':self.slug})
 
 
 class Comment(models.Model):
@@ -36,7 +36,7 @@ class Comment(models.Model):
 		return self.comment_text
 
 	def	get_absolute_url(self):
-		return reverse("details",kwargs={'slug':self.post.slug})
+		return reverse("posts:details",kwargs={'slug':self.post.slug})
 
 
 		

@@ -28,7 +28,7 @@
 {% endif %}
 <hr>
 <h5>Add Comment</h5>
-<form method="POST" action="{% url 'details' slug=object.slug %}">{% csrf_token %}
+<form method="POST" action="{% url 'posts:details' slug=object.slug %}">{% csrf_token %}
 	{{form.as_p}}
 	<button style="padding-top: 25px" type="submit">Comment</button>
 </form>

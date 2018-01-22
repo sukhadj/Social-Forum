@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+		{% block title %}
+	{{user.username}} | Details | {{block.super}}
+	{% endblock title %}
+
+	{% block content %}
+	<h3>{{user.username}}</h3><br>
+	<p>
+		
+		{% include 'profiles/snippets/follow_snippet.html' with username=user.username is_following=is_following %}
+	
+		
+	</p>
+		<ul>
+			{% for post in user.post_set.all %}
+				<li>
+					<a href="{% url 'posts:details' slug=post.slug %}">{{post.title}}</a>
+				</li>
+			{% endfor %}
+	
+		</ul>	
+		
+	{% endblock content %}
