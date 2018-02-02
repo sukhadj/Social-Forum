@@ -16,7 +16,7 @@ class ProfileFollowToggle(LoginRequiredMixin,View):
 			profile_.followers.remove(user)
 		else:
 			profile_.followers.add(user)
-		return redirect(f'/profiles/{user_to_toggle}/')
+		return redirect('/profiles/{user_to_toggle.username}/')
 
 
 class ProfileDetailView(DetailView):

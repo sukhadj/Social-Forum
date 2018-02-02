@@ -8,30 +8,22 @@ from .forms import PostsForm,CommentForm
 
 class HomeView(TemplateView):
 	template_name="home.html"
-	
+	def get(self,request,*args,**kwargs):
+		user=request.user
+		if not user.is_authenticated():
+			return render(request,"home.html",{})
+		else:
+			
+			is_following_user_ids=[x.user.id for x in user.is_following.all()]
+			qs=Post.objects.filter(user__id__in=is_following_user_ids).order_by("-updated")
+			return render(request,"home.html",{'object_list':qs})
+
+
 
 class PostSelfListView(LoginRequiredMixin,ListView):
 	template_name="posts/post_list.html"
 	def get_queryset(self):
 		return Post.objects.filter(user=self.request.user)
-
-# class PostDetailView(LoginRequiredMixin,DetailView):
-# 	queryset=Post.objects.all()
-# 	template_name="posts/post_detail.html"
-
-# 	def get_context_data(self,*args,**kwargs):
-# 		context=super(PostDetailView,self).get_context_data(*args,**kwargs)
-# 		slug	=self.kwargs.get("slug")
-# 		obj  	=Post.objects.get(slug=slug)
-# 		form 	=CommentForm(self.request.GET or None)
-# 		errors	=None
-# 		if form.is_valid():
-# 	#		form.user=self.request.user
-# 			form.save()
-# 		if form.errors:
-# 			errors=form.errors
-# 		context={'Commentform':form,'errors':errors,'object':obj}
-# 		return context
 
 
 class PostCreateView(LoginRequiredMixin,CreateView):

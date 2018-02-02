@@ -4,5 +4,18 @@ Home | {{block.super}}
 {% endblock title %}
 
 {% block content %}
-This is Home Page
-{% endblock %}
+{% if request.user.is_authenticated %}
+<ul>
+	{% for obj in object_list %}
+	<li>
+		<a href="{{obj.get_absolute_url}}">{{obj.title}}</a>
+		
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<h4>Welcome to SocialForum.com</h4>
+
+{% endif %}
+
+{% endblock content %}
