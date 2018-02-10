@@ -1,3 +1,13 @@
+<style type="text/css">
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+}
+
+
+</style>
+
 {% extends "base.html" %}
 {% block title %}
 Home | {{block.super}}
@@ -5,14 +15,39 @@ Home | {{block.super}}
 
 {% block content %}
 {% if request.user.is_authenticated %}
-<ul>
+<div class="container" >
+	<ul style="list-style: none;">
 	{% for obj in object_list %}
-	<li>
-		<a href="{{obj.get_absolute_url}}">{{obj.title}}</a>
+	<li style="padding: 20px">
+	<div  class="card">
+	<div class="card-header" >
+	<h2><a href="{{obj.get_absolute_url}}">{{obj.title}}</a></h2>
+	<a href="{% url 'profiles:user_detail' username=obj.user.username %}"><i style="margin-right: 2px;float: right;">by @{{obj.user}}</i></a>	
+	</div>
+
+	<div class="card-body">
+	<div class="col">
+	<div class="row">
+		{{obj.text|truncatechars:500}}
+	</div>
+	<div class="row">
+		{% if obj.image %}
+		<img class="img-thumbnail"  src="{{obj.image.url}}" alt="image" style="width: 50%;margin-left: auto;margin-right: auto;"  /><br>
+		{% endif %}
+	</div>
+	</div>
+	
+	</div>
+	</div>
+	
+	
+		
 		
 	</li>
 	{% endfor %}
 </ul>
+
+</div>
 {% else %}
 <h4>Welcome to SocialForum.com</h4>
 

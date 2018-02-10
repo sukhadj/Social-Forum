@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "posts",
-    'profiles'
+    'profiles',
+    # "channels",
+    # 'chat'
 ]
 
 MIDDLEWARE = [
@@ -70,7 +72,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'forum.wsgi.application'
-
+#ASGI_APPLICATION = 'forum.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -122,4 +124,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'/media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'MEDIA')
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgiref.inmemory.ChannelLayer',
+        'ROUTING': 'forum.routing.channel_routing',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379') ],
+        },
+    },
+
+}
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
+
+#ASGI_APPLICATION = 'forum.routing.chat'

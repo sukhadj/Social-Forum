@@ -1,17 +1,48 @@
+<style type="text/css">
+.card-header a:hover{
+	color: #2BBBAD	;
+	text-shadow: 0px 1px #000;
+	}
+</style>
 {% extends "base.html" %}
 {% block title %}
 Posts | {{block.super}}
 {% endblock title %}
 
 {% block content %}
-<ul>
+<div class="container" >
+	<ul style="list-style: none;">
 	{% for obj in object_list %}
-	<li>
-		<a href="{{obj.get_absolute_url}}">{{obj.title}}</a>
+	<li style="padding: 20px">
+	
+	<div  class="card">
+	<div class="card-header">
+	<h2><a href="{{obj.get_absolute_url}}">{{obj.title}}</a></h2>
+		
+	</div>
+
+	<div class="card-body">
+	<div class="col">
+	<div class="row">
+		{{obj.text|truncatechars:500}}
+	</div>
+	<div class="row">
+		{% if obj.image %}
+		<img class="img-thumbnail"  src="{{obj.image.url}}" alt="image" style="width: 50%;margin-left: auto;margin-right: auto;"  /><br>
+		{% endif %}
+	</div>
+	</div>
+	
+	</div>
+	</div>
+	
+		
 		
 	</li>
 	{% endfor %}
 </ul>
+
+</div>
 
 
 {% endblock content %}

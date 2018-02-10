@@ -1,0 +1,59 @@
+{%  load static %}
+<style type="text/css">
+.nav a:hover{
+background-color: #1E2524;
+
+}
+
+
+</style>
+
+<div class="topnav" style="background-color: #606060" >
+
+<div class="row">
+<div class="col">
+<div style="text-align: center;">
+<h1 style="color: #E1F5F1;margin-left: 250px" >SocailForum.com</h1>
+
+</div>
+<div class="nav">
+
+		<a  style=" padding: 20px; color: white" href="{% url 'home' %}"> Home </a>
+		<a style="padding:20px; color: white"  href="{% url 'posts:my_posts'  %}">My Posts</a>
+
+	</div>
+	
+</div>
+
+
+<div class="col-sm-2">
+
+
+	{% if request.user.is_authenticated %}
+<div class="row" style="height:70%">
+	<img  src='{% static "profiles/profile.png" %}' class="rounded-circle"  alt="my img" style="width: 40%;height: 100% ; padding: 10px;margin-right: 20px;margin-left: 50px">
+
+</div>
+<div class="row" >
+
+<i style="color: #FFF;margin-left: 60px;	" > @{{request.user.username}}</i>
+<a style=" margin-left: 20px;color: white" href="{% url 'login' %}" >LogOut</a>
+
+{%else%}
+<div style="align-self: center;">
+	<a  style="padding:20px; color: white ; float: right" href="{% url 'login' %}"> Login </a>
+
+</div>
+{% endif %}
+
+</div>
+
+
+
+</div>
+
+</div>
+	
+	
+
+</div>

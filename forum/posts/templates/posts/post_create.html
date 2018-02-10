@@ -6,9 +6,13 @@ Create | {{block.super}}
 {% if form.errors %}
 	{{form.errors}}
 	{% endif %}
-	<form method="POST" enctype="multipart/form-data" >{% csrf_token %}
+	<div style="padding: 20px" class="form-group">
+
+		<form method="POST" enctype="multipart/form-data" >{% csrf_token %}
 	{{form.as_p}}
 	<button style="padding-top: 25px" type="submit">Save</button>
 </form>
+	</div>
+	
 
 {% endblock content %}

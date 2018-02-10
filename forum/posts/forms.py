@@ -5,6 +5,10 @@ class PostsForm(forms.ModelForm):
 	class Meta:
 		model=Post
 		fields=['title','text','image']
+		widgets = {
+            'text': forms.Textarea(attrs={'cols': 80, 'rows': 20,'placeholder':"Title Here",'label':""}),
+        	'title':forms.Textarea(attrs={'cols':80,'rows':2}),
+        }
 
 		def __init__(self):
 			self.fields['image'].required=False
