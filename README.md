@@ -10,6 +10,7 @@
 
 - Download the repository in your desired directory by running the following commands in your terminal:
     >cd path/to/your/directory/
+    
     >git clone https://github.com/sukhadj/Social-Forum.git
  
 - Install the required packages and libraries with this command:
