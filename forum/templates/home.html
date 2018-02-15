@@ -3,6 +3,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
+    border-color: aqua;
 }
 
 
@@ -21,7 +22,7 @@ Home | {{block.super}}
 	<li style="padding: 20px">
 	<div  class="card">
 	<div class="card-header" >
-	<h2><a href="{{obj.get_absolute_url}}">{{obj.title}}</a></h2>
+	<h2><a style="text-decoration: none;" href="{{obj.get_absolute_url}}">{{obj.title}}</a></h2>
 	<a href="{% url 'profiles:user_detail' username=obj.user.username %}"><i style="margin-right: 2px;float: right;">by @{{obj.user}}</i></a>	
 	</div>
 

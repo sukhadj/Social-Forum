@@ -5,7 +5,6 @@ background-color: #1E2524;
 
 }
 
-
 </style>
 
 <div class="topnav" style="background-color: #606060" >
@@ -18,8 +17,8 @@ background-color: #1E2524;
 </div>
 <div class="nav">
 
-		<a  style=" padding: 20px; color: white" href="{% url 'home' %}"> Home </a>
-		<a style="padding:20px; color: white"  href="{% url 'posts:my_posts'  %}">My Posts</a>
+		<a  style=" text-decoration: none;padding: 20px; color: white" href="{% url 'home' %}"> Home </a>
+		<a style="text-decoration: none;padding:20px; color: white"  href="{% url 'posts:my_posts'  %}">My Posts</a>
 
 	</div>
 	
@@ -37,7 +36,7 @@ background-color: #1E2524;
 <div class="row" >
 
 <i style="color: #FFF;margin-left: 60px;	" > @{{request.user.username}}</i>
-<a style=" margin-left: 20px;color: white" href="{% url 'login' %}" >LogOut</a>
+<a  style="margin-left: 20px;color: white" href="{% url 'login' %}" >Log Out</a>
 
 {%else%}
 <div style="align-self: center;">
