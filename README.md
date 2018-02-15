@@ -17,3 +17,4 @@
 -   Change working directory to the directory containig manage.py and run following command:
     >python manage.py runserver
  
+After a few moments the server will start and you can see the link in your terminal. 
