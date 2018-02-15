@@ -1,4 +1,4 @@
-<h1>Social-Forum</h1> 
+__Social-Forum__ 
 A django project
 <h3>Features:</h3>
 <ul>
