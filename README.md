@@ -1,4 +1,4 @@
-__Social-Forum__ 
+#__Social-Forum__ 
 A django project
 <h3>Features:</h3>
 <ul>
