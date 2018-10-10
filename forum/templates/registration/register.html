@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{%  extends "base.html" %}
+{% block title %}
+Register |
+{% endblock title %}
+
+{% block content %}
+
+<div class="col-sm-6 col-sm-offset-3 text-centre">
+    <h1>Register</h1>
+<form method="post" action="{% url 'register' %}">
+{% csrf_token %}
+{{form.as_p}}
+
+<input type="submit" value="Register" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+    <p>Do you need to <a href="{% url 'login'%}">Login</a>?</p>
+</div>
+
+
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+
+
+{% endblock %}

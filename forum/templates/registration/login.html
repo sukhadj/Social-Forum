@@ -17,7 +17,7 @@ Login |
         <p>You are already logged in</p>
 {% endif %}
 {% endif %}
-
+<br>
 {% if not user.is_authenticated %}
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}

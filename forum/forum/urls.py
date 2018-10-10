@@ -3,8 +3,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView,PasswordResetView,LogoutView
-from posts.views import HomeView,PostSelfListView,PostDetailCommentView,PostCreateView
-from profiles.views import ProfileFollowToggle
+from posts.views import HomeView, PostSelfListView, PostDetailCommentView, PostCreateView
+from profiles.views import ProfileFollowToggle, RegisterView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -13,6 +13,7 @@ urlpatterns = [
    	url(r'^profiles/',include("profiles.urls",namespace="profiles")),
    	url(r'^follow/',ProfileFollowToggle.as_view(),name="follow"),
     url(r'^login/$',LoginView.as_view(),name='login'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$',LogoutView.as_view(),name='logout'),
     url(r'^password_reset/$',PasswordResetView.as_view(),name='password_reset'),    
 
